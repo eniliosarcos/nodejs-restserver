@@ -1,26 +1,26 @@
 const { response, request } = require("express")
 
 
-// const esAdminRole = (req = request,res = response, next) => {
+const esAdminRole = (req = request,res = response, next) => {
 
-//     if(!req.usuario){
+    if(!req.usuario){
 
-//         return res.status(500).json({
-//             msg: 'se quiere verificar el role sin validar el token primero'
-//         });
-//     }
+        return res.status(500).json({
+            msg: 'se quiere verificar el role sin validar el token primero'
+        });
+    }
 
-//     const {rol, nombre} = req.usuario;
+    const {rol, nombre} = req.usuario;
 
-//     if(rol !== 'ADMIN_ROLE'){
+    if(rol !== 'ADMIN_ROLE'){
 
-//         return res.status(401).json({
-//             msg: `${nombre} no es administrador - no puedes hacer esto`
-//         });
-//     }
+        return res.status(401).json({
+            msg: `${nombre} no es administrador - no puedes hacer esto`
+        });
+    }
 
-//     next();
-// }
+    next();
+}
 
 const tieneRole = ( ...roles ) => {
 
@@ -45,6 +45,6 @@ const tieneRole = ( ...roles ) => {
 
 
 module.exports = {
-    // esAdminRole,
+    esAdminRole,
     tieneRole
 }
